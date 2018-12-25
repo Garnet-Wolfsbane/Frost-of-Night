@@ -1,0 +1,133 @@
+package packageVoid;
+
+import processing.core.PApplet;
+
+public class MainVoid extends PApplet 
+{
+
+	boolean playerMove = true;
+	boolean moveUp = false;
+	boolean moveDown = false;
+	boolean moveLeft = false;
+	boolean moveRight = false;
+	
+	float playerUD = 400;
+	float playerLR = 100;
+	
+	
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		PApplet.main("packageVoid.MainVoid");
+
+	}
+	
+	public void settings()
+	{
+		size(1000, 500);
+	}
+	
+	public void setup()
+	{
+		background(25);
+	}
+	
+	public void draw()
+	{
+		player();
+	}
+	
+	public void keyPressed()
+	{
+		if(playerMove == true)
+		{
+			if(keyCode == UP)
+			{
+				moveUp = true;
+			}
+			
+			if(keyCode == DOWN)
+			{
+				moveDown = true;
+			}
+			
+			if(keyCode == LEFT)
+			{
+				moveLeft = true;
+			}
+			if(keyCode == RIGHT)
+			{
+				moveRight = true;
+			}
+		}
+	}
+	
+	public void keyReleased()
+	{
+		if(playerMove == true)
+		{
+			if(keyCode == UP && moveUp == true)
+			{
+				moveUp = false;
+			}
+			
+			if(keyCode == DOWN && moveDown == true)
+			{
+				moveDown = false;
+			}
+			if(keyCode ==  LEFT && moveLeft == true)
+			{
+				moveLeft = false;
+			}
+			if(keyCode == RIGHT && moveRight == true)
+			{
+				moveRight = false;
+			}
+		}
+		
+	}
+	
+	public void player()
+	{
+		background(25);
+		if(playerMove == true)
+		{
+			if(moveUp == true)
+			{
+				if(playerUD - 15 > 0)
+				{
+					playerUD -= 15;
+				}
+			}
+		
+			if(moveDown == true)
+			{
+				if(playerUD + 15 < 500)
+				{
+					playerUD += 15;
+				}
+			}
+			
+			if(moveLeft == true)
+			{
+				if(playerLR - 15 > 5)
+				{
+					playerLR -= 15;
+				}
+			}
+			
+			if(moveRight == true)
+			{
+				if(playerLR + 15 < 995)
+				{
+					playerLR += 15;
+				}
+			}
+		}
+		
+		fill(25, 200, 225);
+		ellipse(playerLR, playerUD, 25, 25);
+		
+	}
+
+}
