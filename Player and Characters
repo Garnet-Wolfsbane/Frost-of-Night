@@ -1,0 +1,256 @@
+  /*
+  *  
+  * Have Black Fox Agents move toward the Player at Guild Hall, talk 6. Use PVectors
+  *  
+  */
+  
+  boolean showPlayer = false;
+  boolean showRainbow = false;
+  boolean showMidnight = false;
+  boolean showBlackFoxchat = false;
+  boolean showGarnet = false;
+  boolean showTrainingDummy = false;
+  
+  boolean playerIntersect = false;
+  boolean rainbowIntersect = false;
+  boolean midnightIntersect = false;
+  
+  boolean playerMove = true;
+  boolean moveUp = false;
+  boolean moveDown = false;
+  boolean moveLeft = false;
+  boolean moveRight = false;
+  
+  float playerUD = 400;
+  float playerLR = 100;
+  float rainbowUD = 100;
+  float rainbowLR = 700;
+  float midnightUD = 350;
+  float midnightLR = 500;
+  
+  color player = #19C8E1;
+  color rainbow = #78006E;
+  color midnight = #1F0EC6;
+  color blackFox = #383176;
+  color devs = #2CB736;
+  
+  int playerMaxHealth = 100;
+  int playerHealth = 100;
+  color health = #FF0000;
+  int playerEmerald = 0;
+  color emerald = #2DE312;
+  int playerDiamond = 0;
+  color diamond = #88F5FA;
+  int playerGold = 0;
+  color gold = #FAEF0F;
+  int playerSilver = 0;
+  color silver = #E0E0E0;
+  int playerBronze = 0;
+  color bronze = #FFBC03;
+  
+  String playerName = "";
+  String HisHer = "";
+  String HeShe = "";
+  String HimHer = "";
+  String MisterMiss = "";
+  String CHisHer = "";
+  String CHeShe = "";
+  String CHimHer = "";
+  String CMisterMiss = "";
+  String Kingdom = "";
+  String Race = "";
+  
+  boolean moveTop = false;
+  boolean moveSide = false;
+  boolean moveToMidnight = false;
+  boolean moveToTraining = false;
+  boolean blackFoxAttack = false;
+  
+  int $x = 0;
+  int $y = 0;
+  
+ 
+  public void player()
+  {
+    if(playerMove == true)
+    {
+      if(moveUp == true)
+      {
+        if(playerUD - 10 > 10)
+        {
+          playerUD -= 10;
+        }
+        PUD = playerUD - 15;
+      }
+    
+      if(moveDown == true)
+      {
+        if(playerUD + 10 < 490)
+        {
+          playerUD += 10;
+        }
+        PUD = playerUD + 15;
+      }
+      
+      if(moveLeft == true)
+      {
+        if(playerLR - 10 > 15)
+        {
+          playerLR -= 10;
+        }
+        PLR = playerLR - 15;
+      }
+      
+      if(moveRight == true)
+      {
+        if(playerLR + 10 < 985)
+        {
+          playerLR += 10;
+        }
+        PLR = playerLR + 15;
+      }
+    }
+    
+    noStroke();
+    fill(player);
+    ellipse(playerLR, playerUD, 25, 25);
+    fill(0, 100, 125);
+    ellipse(playerLR-14, playerUD-14, 17.5, 17.5);
+    ellipse(playerLR+14, playerUD+14, 17.5, 17.5);
+    ellipse(playerLR-14, playerUD+14, 17.5, 17.5);
+    ellipse(playerLR+14, playerUD-14, 17.5, 17.5);
+    stroke(0);
+    
+    if(playerHealth <= 0)
+    {
+      talk = 5;
+    }
+    
+    if(keyCode == 'B')
+    {
+      if(hasBow == true)
+      {
+        bow(PLR, PUD, 1, 10);
+      }
+    }
+    
+  }
+  
+  public void rainbow()
+  {
+    noStroke();
+    fill(#DC23D2);
+    ellipse(rainbowLR, rainbowUD, 25, 25);
+    fill(rainbow);
+    ellipse(rainbowLR-14, rainbowUD-14, 17.5, 17.5);
+    ellipse(rainbowLR+14, rainbowUD+14, 17.5, 17.5);
+    ellipse(rainbowLR-14, rainbowUD+14, 17.5, 17.5);
+    ellipse(rainbowLR+14, rainbowUD-14, 17.5, 17.5);
+    stroke(0);
+    if((playerUD >= rainbowUD - 25 && playerUD <= rainbowUD + 25) && (playerLR >= rainbowLR - 25 && playerLR <= rainbowLR + 25))
+    {
+      if(start == true)
+      {
+        if(rainbowIntersect == false)
+        {
+          talk = 3;
+        }
+        rainbowIntersect = true;
+      }
+      if(moveTop == true)
+      {
+        rainbowUD -= 2.5;
+      }
+    }
+    
+  if(guildHall == true)
+  {
+    if(moveToMidnight == true)
+    {
+      if(rainbowUD >= 350)
+      {
+        rainbowUD -= 1;
+      }
+      if(rainbowLR <= 450)
+      {
+        rainbowLR += 1;
+      }
+    }
+    
+    if(moveToTraining == true)
+    {
+      if(rainbowUD >= 150)
+      {
+        rainbowUD -= 2.5;
+      }
+      if(rainbowLR <= 1050)
+      {
+        rainbowLR += 2.5;
+      }
+    }
+    
+  }
+    
+  }
+  
+public void midnight()
+{
+    noStroke();
+    fill(#524B9D);
+    ellipse(midnightLR, midnightUD, 25, 25);
+    fill(midnight);
+    ellipse(midnightLR-14, midnightUD-14, 17.5, 17.5);
+    ellipse(midnightLR+14, midnightUD+14, 17.5, 17.5);
+    ellipse(midnightLR-14, midnightUD+14, 17.5, 17.5);
+    ellipse(midnightLR+14, midnightUD-14, 17.5, 17.5);
+    stroke(0);
+    if((playerUD >= midnightUD - 25 && playerUD <= midnightUD + 25) && (playerLR >= midnightLR - 25 && playerLR <= midnightLR + 25))
+    {
+        midnightIntersect = true;
+    } 
+    if(guildHall == true)
+    {
+      if(moveSide == true)
+      {
+        midnightLR += 2.5; 
+        if(midnightLR >= 1050)
+        {
+          moveSide = false;
+          showMidnight = false;
+        }
+      }
+    }
+}
+
+public void blackFoxchat(int x, int y)
+{ 
+    $x = x;
+    $y = y;
+    noStroke();
+    fill(#2D19E5);
+    ellipse($x, $y, 25, 25);
+    fill(blackFox);
+    ellipse($x-14, $y-14, 17.5, 17.5);
+    ellipse($x+14, $y+14, 17.5, 17.5);
+    ellipse($x-14, $y+14, 17.5, 17.5);
+    ellipse($x+14, $y-14, 17.5, 17.5);
+    stroke(0);
+    if(guildHall == true)
+    {
+      if(moveTop == true)
+      {
+        $y -= 2.5;
+        if($y <= -50)
+        {
+          moveTop = false;
+          showBlackFoxchat = false;
+        }
+      }
+    }
+    
+}
+
+public void garnet()
+{
+  
+}
