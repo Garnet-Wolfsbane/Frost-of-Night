@@ -1,0 +1,41 @@
+/*
+*  
+*  Programme in training dummies
+*  Programme in Black Fox Agents
+*  
+*/
+
+public void trainingDummy(int x, int y, int hp, int minDmg, int maxDmg)
+{
+  
+  
+  if(hp <= 0)
+  {
+    showTrainingDummy = false;
+    float type = random(1,5);
+    type = round(type);
+    float amount = random(1,5);
+    amount = round(amount);
+    if(type == 1)
+    {
+      playerEmerald += amount;
+    }
+    if(type == 2)
+    {
+      playerDiamond += amount;
+    }
+    if(type == 3)
+    {
+      playerGold += amount;
+    }
+    if(type == 4)
+    {
+      playerSilver += amount;
+    }
+    if(type == 5)
+    {
+      playerBronze += amount;
+    }
+  }
+  
+}
