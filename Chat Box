@@ -1,0 +1,347 @@
+/*
+*  
+* Contine the kingdom chat (Don't press play just yet) (fixed?)
+* Work on the Training room chat
+*  
+*/
+
+int talk = 2;
+boolean Q1 = false;
+boolean Q2 = false;
+boolean randomized = false;
+
+public void chat()
+{
+  fill(100);
+  rect(0, 500, 1000, 250);
+  if(start == true)
+  {
+    
+    switch(talk)
+    {
+      case(1):
+                playerStats();
+                break;
+      case(2):
+                fill(player);
+                textSize(25);
+                text(playerName + ":", 75, 550);
+                text("My head hurts... Where am I? Last thing I remember is... Nothing...", 75, 575);
+                text("Maybe that person over there can help me if I use the Arrow keys.", 75, 600);
+                
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 1;
+                  keyCode = 'a';
+                }
+                break;
+                
+      case(3):  
+                fill(rainbow);
+                textSize(25);
+                text("???:  ", 75, 550);
+                text("Good, you're awake! About time too, Midnight was begining to place bets", 75, 575);
+                text("on how long it would be before you woke up.", 75, 600);
+                fill(player);
+                text("Key 1:  Who are you?", 125, 625);
+                text("Key 2:  How long was I out?", 125, 650);
+                if(keyCode == '1')
+                {
+                  talk = 4;
+                  Q2 = true;
+                  keyCode = 'a';
+                }
+                if(keyCode == '2')
+                {
+                  talk = 4;
+                  Q1 = true;
+                  keyCode = 'a';
+                }
+                break;
+                
+      case(4):
+                fill(rainbow);
+                textSize(25);
+                text("???:  ", 75, 550);
+                if(Q1 == true)
+                {
+                  text("Not long, just two days. Oh, I'm Chloe, but everyone calls me Rainbow!", 75, 575);
+                }
+                if(Q2 == true)
+                {
+                  text("Oh, I'm Chloe but everyone in the Black Fox calls me Rainbow!", 75, 575);
+                }
+                text("If you don't mind me asking, what is your name and sex?", 75, 600);
+                fill(player);
+                text("Key 1:  " + playerName + " and I am Male", 125, 625);
+                text("Key 2:  " + playerName + " and I am Female", 525, 625);
+                if(keyCode == '2')
+                {
+                  talk = 6;
+                  HisHer = "Her";
+                  HeShe = "She";
+                  HimHer = "Her";
+                  MisterMiss = "Miss";
+                  CHisHer = "HER";
+                  CHeShe = "SHE";
+                  CHimHer = "HER";
+                  CMisterMiss = "MISS";
+                  Q1 = false;
+                  Q2 = false;
+                  keyCode = 'a';
+                }
+                if(keyCode == '1')
+                {
+                  talk = 6;
+                  HisHer = "His";
+                  HeShe = "He";
+                  HimHer = "Him";
+                  MisterMiss = "Mister";
+                  CHisHer = "HIS";
+                  CHeShe = "HE";
+                  CHimHer = "HIM";
+                  CMisterMiss = "MISTER";
+                  Q1 = false;
+                  Q2 = false;
+                  keyCode = 'a';
+                }
+                break;
+                
+      case(5):
+                showPlayer = false;
+                showRainbow = false;
+                background(25);
+                fill((C * 3) + 150, 0, 0);
+                textSize(40);
+                text("The Frost of Night has fallen into eternal slumber,", 15, 300);
+                text("LONG LIVE THE FOX!", 300, 350);
+                textSize(25);
+                text("Press Enter to restart", 375, 625);
+                
+                
+                if(keyCode == ENTER)
+                {
+                  start = true;
+                  talk = 1;
+                  showPlayer = true;
+                  showRainbow = true;
+                  playerMaxHealth = 100;
+                  playerHealth = 100;
+                  playerEmerald = 0;
+                  playerDiamond = 0;
+                  playerGold = 0;
+                  playerSilver = 0;
+                  playerBronze = 0;
+                  playerUD = 400;
+                  playerLR = 100;
+                  rainbowUD = 100;
+                  rainbowLR = 700;
+                }
+      
+      case(6):  
+                fill(rainbow);
+                textSize(25);
+                text("Rainbow:  ", 75, 550);
+                text("Thank you! *She writes something down* Now, let's go!", 75, 575);
+                text("The others are dying to meet you!", 75, 600);
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 1;
+                  moveTop = true;
+                  keyCode = 'a';
+                }
+      
+    }
+    
+  }
+  
+//  *  *  *  *  *  *  *  *  *   *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
+  
+  if(guildHall == true)
+  {
+    switch(talk)
+    {
+      case(1): 
+                playerStats();
+                break;
+      case(2): 
+                fill(midnight);
+                textSize(25);
+                text("???:  ", 75, 575);
+                text("You're telling me that you idiots lost the prince TO A SMALL ", 75, 600);
+                text("FLAIRIAN AMBUSH PARTY!? YOU ARE BLACK FOXES OF FROTIA! GO BACK OUT THERE AND", 75, 625);
+                text("FIND HIM OR I'LL HAVE YOUR HEADS SPIKED INFRONT OF THE KING MYSELF!", 75, 650);
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 3;
+                  moveToMidnight = true;
+                  moveTop = true;
+                  keyCode = 'a';
+                }
+                break;
+      case(3): 
+                fill(rainbow);
+                textSize(25);
+                text("Rainbow:  ", 75, 575);
+                text("Midnight! " + HeShe + " is awake. " + HisHer + " name is " + playerName, 75, 600);
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 4;
+                  keyCode = 'a';
+                }
+                break;
+      case(4): 
+               fill(midnight);
+               textSize(25);
+               text("???:  ", 75, 575);
+               text("Ah, good! I am Commander Midnight of the Black Fox Organization.", 75, 600);
+               text("We found you on our way back from a Flarian outpost. You were out cold", 75, 625);
+               text("and Rainbow didn't want to leave you to die.", 75, 650);
+               fill(C, (C * 2) + 150, (C * 2) + 200);
+               text("Press Enter", 400, 675);
+               if(keyCode == ENTER)
+               {
+                 talk = 5;
+                 keyCode = 'a';
+               }
+                break;
+      case(5): 
+                fill(midnight);
+                textSize(25);
+                text("Midnight:  ", 75, 575);
+                text("Now that you are up, we need to clear a few things up.", 75, 600);
+                text("For starters, Are you Flarian or Frotian?", 75, 625);
+                fill(player);
+                text("Key 1:  Flarian", 125, 650);
+                text("Key 2:  Frotian", 325, 675);
+                text("Key 3:  I don't know", 525, 650);
+                if(keyCode == '1')
+                {
+                  Kingdom = "Flaria";
+                  Race = "Flarian";
+                  talk = 6;
+                  keyCode = 'a';
+                }
+                if(keyCode == '2')
+                {
+                  Kingdom = "Frotia";
+                  Race = "Frotian";
+                  talk = 7;
+                  keyCode = 'a';
+                }
+                if(keyCode == '3')
+                {
+                  float guess = random(1,10);
+                  guess = round(guess);
+                  if(guess % 2 == 0)
+                  {
+                    Kingdom = "Flaria";
+                    Race = "Flarian";
+                    talk = 6;
+                  }
+                  if(guess % 2 == 1)
+                  {
+                    Kingdom = "Frotia";
+                    Race = "Frotian";
+                    talk = 7;
+                  }
+                  keyCode = 'a';
+                }
+                break;
+      case(6): 
+                fill(rainbow);
+                textSize(25);
+                text("Rainbow:  ", 75, 575);
+                if(randomized == true)
+                {
+                  text("Wait a second, those markings... thier Flarian...", 75, 600);
+                  text("You're the enemey... FOXES, APREHEND " + CHimHer + "!", 75, 600);
+                }
+                else
+                {
+                  text("Flarian... You're the enemey... FOXES, APREHEND " + CHimHer + "!", 75, 600);
+                }
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 1;
+                  keyCode = 'a';
+                }
+                fill(devs);
+                text("Note to Devs: Work out the Black Fox attacking", 125, 625);
+                blackFoxAttack = true;
+                break;
+      case(7): 
+                fill(midnight);
+                textSize(25);
+                text("Midnight:  ", 75, 575);
+                text("What here you doing so far into Flarian territory then?", 75, 600);
+                fill(player);
+                text("Key 1:  I was scouting the area looking for food.", 125, 625);
+                text("Key 2:  I don't remember... I don't remember much of anything", 125, 650);
+                if(keyCode == '1')
+                {
+                  talk = 8;
+                  keyCode = 'a';
+                }
+                
+                if(keyCode == '2')
+                {
+                  talk = 8;
+                  keyCode = 'a';
+                }
+                break;
+      case(8): 
+                fill(midnight);
+                textSize(25);
+                text("Midnight:  ", 75, 575);
+                text("I have my doubts about you " + MisterMiss + " " + playerName, 75, 600);
+                text("So until you prove otherwise, I have my eye on you.", 75, 625);
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 9;
+                  moveSide = true;
+                  keyCode = 'a';
+                }
+                break;
+      case(9): 
+                fill(rainbow);
+                textSize(25);
+                text("Rainbow:  ", 75, 575);
+                text("Don't mind him, his a bit... protective of all of us. ", 75, 600);
+                text("He doesn't like putting us on the firing line unless we have to...", 75, 625);
+                text("Let's head to the training room. I want to make sure you're battle ready!", 75, 650);
+                fill(C, (C * 2) + 150, (C * 2) + 200);
+                text("Press Enter", 400, 675);
+                if(keyCode == ENTER)
+                {
+                  talk = 1;
+                  moveToTraining = true;
+                  keyCode = 'a';
+                }
+                break;
+      case(10): 
+                
+                break;
+      
+    }
+    
+  }
+  
+  if(trainingRoom == true)
+  {
+    
+  }
+  
+}
