@@ -1,0 +1,142 @@
+  /*
+  *  
+  *  Add Rects for "doors"
+  *  Work on Trianing Room, Weapons, and Enemies
+  *  
+  */
+
+
+boolean playerSetup = true;
+boolean start = false;
+boolean guildHall = false;
+boolean trainingRoom = false;
+
+float C = 26;
+boolean colourUp = true;
+boolean colourDown = false;
+
+public void playerSetup()
+  {
+    background(25);
+    textSize(40);
+    fill(25, 181, 224);
+    text("Frost of Night", 350, 150);
+    textSize(15);
+    text("By: Night Fox Studio", 400, 175);
+    textSize(25);
+    text("Please Enter Your Security Access Codename:  " + playerName, 50, 350);
+    fill(C, (C * 2) + 150, (C * 2) + 200);
+    text("Press Enter when you are ready", 50, 375);
+
+    if(keyCode == ENTER)
+    {
+      playerSetup = false;
+      start = true;
+      showPlayer = true;
+      showRainbow = true;
+      keyCode = 'a';
+    }
+  }
+  
+  public void startlvl()
+  {
+    background(25);
+    chat();
+    if(showPlayer == true)
+    {
+      player();
+    }
+    if(showRainbow == true)
+    {
+      rainbow();
+    }
+    
+    if(rainbowIntersect == true && playerUD <= 25)
+    {
+      rainbowIntersect = false;
+      start = false;
+      showMidnight = true;
+      guildHall = true;
+      talk = 2;
+      moveTop = false;
+      playerUD = 450;
+      playerLR = 100;
+      rainbowUD = 425;
+      rainbowLR = 200;
+      $y = 300;
+      showBlackFoxchat = true;
+      
+    }
+      
+  }
+  
+  public void playerStats()
+  {
+    fill(25, 200, 225);
+    textSize(35);
+    text(playerName, 75, 550);
+    textSize(25);
+    if(playerHealth > 25)
+    {
+      fill(health);
+    }
+    else if (playerHealth <= 25)
+    {
+      fill((C * 4) + 100, 0,0);
+    }
+    text("Health", 75, 600);
+    rect(75, 610, playerHealth * 2, 25);
+    fill(emerald);
+    text("Emerald:  " + playerEmerald, 400, 550);
+    fill(diamond);
+    text("Diamond:  " + playerDiamond, 400, 575);
+    fill(gold);
+    text("Gold:  " + playerGold, 400, 600);
+    fill(silver);
+    text("Silver:  " + playerSilver, 400, 625);
+    fill(bronze);
+    text("Bronze:  " + playerBronze, 400, 650);
+  }
+  
+  public void guildHall()
+  {
+    background(25);
+    chat();
+    if(showPlayer == true)
+    {
+      player();
+    }
+    if(showRainbow == true)
+    {
+      rainbow();
+    }
+    if(showMidnight == true)
+    {
+      midnight();
+    }
+    if(showBlackFoxchat == true)
+    {
+      blackFoxchat(550, $y);
+      blackFoxchat(450, $y);
+    }
+  }
+  
+  public void trainingRoom()
+  {
+    if(showPlayer == true)
+    {
+      player();
+    }
+    if(showRainbow == true)
+    {
+      rainbow();
+    }
+    if(showGarnet == true)
+    {
+      garnet();
+    }
+    if(showTrainingDummy == true)
+    {
+      trainingDummy(500, 250, 100, 5, 15);
+    }
+  }
