@@ -1,0 +1,53 @@
+/*
+*  Make a method for Wooden Bow (starter weapon A) [make an PVector for arrows with a quiver number]
+*  Make a method for Rusty Sword (starter weapon B)
+*  Upgrade the Weapons or make multiple better ones
+*
+*/
+
+float playerDmg = 0;  //Damage to the player
+float enemyDmg = 0;  //Damage to the enemy
+
+boolean hasBow = true;
+boolean hasSword = false;
+
+float PLR;
+float PUD;
+
+PVector position;
+PVector velocity;
+PVector acceleration;
+int arrows = 15;
+boolean showArrow = false;
+
+public void bow(float x, float y, int minDmg, int maxDmg)
+{
+  float dmg = random(minDmg, maxDmg);
+  dmg = round(dmg);
+  
+  fill(#A5742A);
+  rect(x, y, 7, 15);
+  
+  if(mousePressed == true && hasBow == true)
+  {
+    if(arrows > 0)
+    {
+      showArrow = true;
+      arrows--;
+    }
+  }
+  if(arrows == 0)
+  {
+    fill(player);
+    textSize(25);
+    text("I'm out of arrows...", playerLR-100, playerUD-25);
+  }
+  
+}
+
+public void sword(float x, float y, int minDmg, int maxDmg)
+{
+  float dmg = random(minDmg, maxDmg);
+  dmg = round(dmg);
+  
+}
